@@ -9,21 +9,22 @@
         type="text"
         placeholder="Enter password's lenght!"
         class="p-2 border-2 border-gray-500 rounded-md font-mono"
+        (input)="handleChange($event.target?.value)"
       />
     </div>
     <div
       class="flex flex-col justify-start place-content-start content-start gap-3"
     >
       <label
-        ><input type="checkbox" class="ml-2" />
+        ><input type="checkbox" class="ml-2" (change)="handleLetterCheck()" />
         <span class="ml-4">Use Letters</span></label
       >
       <label
-        ><input type="checkbox" class="ml-2" />
+        ><input type="checkbox" class="ml-2" (change)="handleNumberCheck()" />
         <span class="ml-4">Use Numbers</span></label
       >
       <label
-        ><input type="checkbox" class="ml-2" />
+        ><input type="checkbox" class="ml-2" (change)="handleSymboleCheck()" />
         <span class="ml-4">Use Symbols</span></label
       >
     </div>
@@ -37,7 +38,7 @@
       <span>Your Password:</span>
       <input
         type="text"
-        value=""
+        value="{{ generatedPass }}"
         disabled
         class="bg-gray-200 text-gray-800 font-mono font-bold border-2 border-gray-400 rounded-md p-3"
       />
