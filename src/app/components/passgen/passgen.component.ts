@@ -14,12 +14,12 @@ export class PassgenComponent {
   isNumbers: boolean = false;
   isSymboles: boolean = false;
 
-  handleChange(e: string) {
-    const parseInput = parseInt(e.value);
+  handleChange(e: any) {
+    const parseInput = parseInt(e.target.value);
     if (!isNaN(parseInput)) {
       this.passLenght = parseInput;
     }
-    console.log(this.passLenght)
+    console.log(this.passLenght);
   }
 
   handleLetterCheck() {
@@ -35,6 +35,23 @@ export class PassgenComponent {
   }
 
   onGenerateClick() {
-    console.log('Generate');
+    this.generatedPass = '';
+    const numbers = '0123456789';
+    const symboles = '!@#$%^&*()';
+    const letters = 'abcdefghijklmnopqrstuvwxyz';
+    var passString: string = '';
+    if (this.isLetters) {
+      passString += letters;
+    }
+    if (this.isNumbers) {
+      passString += numbers;
+    }
+    if (this.isSymboles) {
+      passString += symboles;
+    }
+    for (let i = 0; i < this.passLenght; i++) {
+      const index = Math.floor(Math.random() * passString.length);
+      this.generatedPass += passString[index];
+    }
   }
 }
