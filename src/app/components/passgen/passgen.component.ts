@@ -1,15 +1,16 @@
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-passgen',
   standalone: true,
-  imports: [],
+  imports: [NgIf],
   templateUrl: './passgen.component.html',
   styleUrl: './passgen.component.css',
 })
 export class PassgenComponent {
-  passLenght: number = 1;
-  generatedPass: string = 'Pass';
+  passLenght: number = 0;
+  generatedPass: string = '';
   isLetters: boolean = false;
   isNumbers: boolean = false;
   isSymboles: boolean = false;
@@ -35,6 +36,12 @@ export class PassgenComponent {
   }
 
   onGenerateClick() {
+    if (!this.passLenght) {
+      return;
+    }
+    if(!this.isSymboles && !this.isNumbers) {
+      this.isLetters = true
+    }
     this.generatedPass = '';
     const numbers = '0123456789';
     const symboles = '!@#$%^&*()';

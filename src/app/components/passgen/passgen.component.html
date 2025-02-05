@@ -28,13 +28,19 @@
         <span class="ml-4">Use Symbols</span></label
       >
     </div>
+    <!-- <button
+      class="bg-blue-300 border-2 rounded-md p-3"
+      (click)="onGenerateClick()"
+      [disabled]="!passLenght"
+    > -->
     <button
       class="bg-blue-300 border-2 rounded-md p-3"
       (click)="onGenerateClick()"
+      [disabled]="!(passLenght && (isLetters || isNumbers || isSymboles))"
     >
       Generate
     </button>
-    <div class="flex flex-col gap-3 justify-start">
+    <div class="flex flex-col gap-3 justify-start" *ngIf="generatedPass">
       <span>Your Password: </span>
       <input
         type="text"
