@@ -8,7 +8,29 @@ import { Component } from '@angular/core';
   styleUrl: './typing.component.css',
 })
 export class TypingComponent {
-  MainText = this.makeRandomText(30);
+  MainText: string = this.makeRandomText(30);
+  CorrectedText: string = this.MainText;
+
+  doCorrection(e: any) {
+    let correctionText = '';
+    let eneteredText = e.target.value;
+    let status = 0;
+    let textColor = '';
+    for (let i = 0; i < this.MainText.length; i++) {
+      if (i < eneteredText.lenght) {
+        if (this.MainText[i] == eneteredText[i]) {
+          textColor = 'text-green-800';
+        } else {
+          textColor = 'text-green-800';
+        }
+      } else {
+        textColor = 'text-gray-600';
+      }
+      correctionText +=
+        "<span class='"+textColor+"'>" + this.MainText[i] + '</span>';
+    }
+    this.CorrectedText = correctionText;
+  }
 
   makeRandomText(lenght: number) {
     let returnString = '';
