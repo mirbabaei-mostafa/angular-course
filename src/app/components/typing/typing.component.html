@@ -1,8 +1,15 @@
 <div
   class="mx-auto my-4 flex flex-col justify-center align-middle gap-5 border-2 border-gray-600 rounded-lg p-5 w-[500px]"
 >
-  <span class="font-sans font-bold text-[32px] text-gray-800 mx-auto">Typing Challenge</span>
-  <div class="font-sans font-medium text-[22px] text-gray-600 align-middle">{{CorrectedText}}</div>
+  <span class="font-sans font-bold text-[32px] text-gray-800 mx-auto"
+    >Typing Challenge</span
+  >
+  <!-- <div class="font-sans font-medium text-[22px] text-gray-600 align-middle">{{CorrectedText}}</div> -->
+  <div class="font-sans font-medium text-[22px] text-gray-600 align-middle">
+    @for(item of CorrectedText; track item) {
+    <span class="{{ item.color }}">{{ item.char }}</span>
+    }
+  </div>
   <input
     type="text"
     placeholder="retype above text here!"
