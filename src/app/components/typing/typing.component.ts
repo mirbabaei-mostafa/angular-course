@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { faker } from 'faker';
 
 @Component({
   selector: 'app-typing',
@@ -11,29 +10,11 @@ import { faker } from 'faker';
 export class TypingComponent {
   MainText: string = '';
   CorrectedText: any;
+  showWin: boolean = false;
 
   constructor() {
     this.MainText = this.makeRandomText(30);
-    this.MainText = faker.lo;
     this.doCorrection('');
-  }
-
-  doCorrection(e: any) {
-    this.CorrectedText = [];
-    let eneteredText = e.target ? e.target.value : '';
-    for (let i = 0; i < this.MainText.length; i++) {
-      let textColor = '';
-      if (i < eneteredText.length) {
-        if (this.MainText[i] == eneteredText[i]) {
-          textColor = 'text-green-600';
-        } else {
-          textColor = 'text-red-600';
-        }
-      } else {
-        textColor = 'text-gray-600';
-      }
-      this.CorrectedText.push({ char: this.MainText[i], color: textColor });
-    }
   }
 
   makeRandomText(lenght: number) {
@@ -46,5 +27,30 @@ export class TypingComponent {
       );
     }
     return returnString;
+  }
+
+  doCorrection(e: any) {
+    this.CorrectedText = [];
+    let eneteredText = e.target ? e.target.value : '';
+    let counter = 0;
+    for (let i = 0; i < this.MainText.length; i++) {
+      let textColor = '';
+      if (i < eneteredText.length) {
+        if (this.MainText[i] == eneteredText[i]) {
+          textColor = 'text-green-600';
+          counter += 1;
+        } else {
+          textColor = 'text-red-600';
+        }
+      } else {
+        textColor = 'text-gray-600';
+      }
+      this.CorrectedText.push({ char: this.MainText[i], color: textColor });
+    }
+    if (counter == this.MainText.length) {
+      this.showWin = true;
+    } else {
+      this.showWin = false;
+    }
   }
 }

@@ -5,9 +5,11 @@
     >Typing Challenge</span
   >
   <div class="font-sans font-medium text-[22px] text-gray-600 align-middle">
-    @for(item of CorrectedText; track item) {
-    <span class="{{ item.color }}">{{ item.char }}</span>
-    }
+    <span
+      [class]="compareLetter(char, eneteredText[i])"
+      *ngFor="let char of MainText.split(''); let i = index"
+      >{{ char }}</span
+    >
   </div>
   <input
     type="text"
@@ -15,9 +17,7 @@
     class="p-3 font-sans text-[14px] text-gray-700 border-2 border-gray-400 rounded"
     (input)="doCorrection($event)"
   />
-  @if (showWin) {
-  <div class="w-full align-middle text-center">
+  <div *ngIf="showWin" class="w-full align-middle text-center">
     <span class="font-sans font-bold text-green-800 text-[32px]">You win!</span>
   </div>
-  }
 </div>
