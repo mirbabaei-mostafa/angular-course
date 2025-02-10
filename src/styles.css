@@ -3,3 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .normal {
+        @apply py-3 px-5 align-middle text-center border-2 border-gray-600 border-r-0 font-normal hover:font-bold cursor-pointer text-[13px] bg-white
+    }
+    .active {
+        @apply bg-gray-400 text-gray-600
+    }
+    .inactive {
+        @apply bg-white hover:bg-blue-300  hover:text-blue-900  text-blue-600
+    }
+}

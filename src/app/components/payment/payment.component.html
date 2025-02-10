@@ -1,0 +1,79 @@
+<div class="flex flex-col justify-start gap-8 mx-auto my-4 w-[640px]">
+  <div class="font-sans font-bold text-[36px] text-gray-700">Payment Form</div>
+  <div class="flex flex-row justify-between gap-6">
+    <div class="flex flex-col w-[326px]">
+      <span class="font-sans font-bold text-[16px] text-gray-900"
+        >Receiver Name</span
+      >
+      <input
+        type="text"
+        (input)="handleReceiverName($event)"
+        class="p-2 border-2 border-gray-400 rounded-md text-[13px]"
+      />
+    </div>
+    <div class="flex flex-col w-[290px] gap-2">
+      <span class="font-sans font-bold text-[16px] text-gray-900"
+        >Receiver Name</span
+      >
+      <span class="font-sans text-[15px] text-gray-900">{{
+        ReceiverName | titlecase
+      }}</span>
+    </div>
+  </div>
+  <div class="flex flex-row justify-between gap-6">
+    <div class="flex flex-col w-[326px]">
+      <span class="font-sans font-bold text-[16px] text-gray-900"
+        >Payment Date</span
+      >
+      <input
+        type="text"
+        (input)="handlePaymentDate($event)"
+        placeholder="13-04-1980"
+        class="p-2 border-2 border-gray-400 rounded-md text-[13px]"
+      />
+    </div>
+    <div class="flex flex-col w-[290px] gap-2">
+      <span class="font-sans font-bold text-[16px] text-gray-900"
+        >Payment Date</span
+      >
+      <span class="font-sans text-[15px] text-gray-900">{{
+        PaymentDate | date:"longDate"
+      }}</span>
+    </div>
+  </div>
+  <div class="flex flex-row justify-between gap-6">
+    <div class="flex flex-col w-[326px]">
+      <span class="font-sans font-bold text-[16px] text-gray-900">Amount</span>
+      <input
+        type="text"
+        (input)="handleAmount($event)"
+        class="p-2 border-2 border-gray-400 rounded-md text-[13px]"
+      />
+    </div>
+    <div class="flex flex-col w-[290px] gap-2">
+      <span class="font-sans font-bold text-[16px] text-gray-900">Amount</span>
+      <span class="font-sans text-[15px] text-gray-900">{{
+        Amount | currency : "USD" : "symbol" : "4.2-2"
+      }}</span>
+    </div>
+  </div>
+  <div class="flex flex-row justify-between gap-6">
+    <div class="flex flex-col w-[326px]">
+      <span class="font-sans font-bold text-[16px] text-gray-900">Distance (Miles)</span>
+      <input
+        type="text"
+        (input)="handleDistance($event)"
+        class="p-2 border-2 border-gray-400 rounded-md text-[13px]"
+      />
+    </div>
+    <div class="flex flex-col w-[290px] gap-2">
+      <span class="font-sans font-bold text-[16px] text-gray-900">Distance (Kilometers)</span>
+      <span *ngIf="(Distance | convert: 'km') > 10" class="font-sans text-[15px] text-gray-900">{{
+        Distance | convert: "cm" : "unit"
+      }}</span>
+      <span class="font-sans text-[15px] text-gray-900">{{
+        Distance | convert: "cm" | number: "1.0-2"
+      }}</span>
+    </div>
+  </div>
+</div>

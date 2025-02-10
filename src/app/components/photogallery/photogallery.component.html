@@ -1,0 +1,32 @@
+<div class="flex flex-col gap-6 align-middle w-[650px] mx-auto my-4">
+  <div class="flex flex-row justify-center">
+    <span
+      (click)="showImage(currentPhoto - 1)"
+      class="p-3 align-middle text-center border-2 border-gray-600 border-r-0 font-normal hover:font-bold cursor-pointer text-[13px] text-blue-600 hover:text-blue-900 bg-white hover:bg-blue-300"
+    >
+      Prev
+    </span>
+    <ng-container *ngFor="let item of photos; let i = index">
+      <span
+        [ngClass]="i === currentPhoto ? 'active' : 'inactive'"
+        class="normal"
+        (click)="showImage(i)"
+        *ngIf="pageIndexer(i)"
+      >
+        {{ i + 1 }}
+      </span></ng-container
+    >
+    <span
+      (click)="showImage(currentPhoto + 1)"
+      class="p-3 align-middle text-center border-2 border-gray-600 font-normal hover:font-bold cursor-pointer text-[13px] text-blue-600 hover:text-blue-900 bg-white hover:bg-blue-300"
+    >
+      Next
+    </span>
+  </div>
+  <div class="text-center text-[16px] font-bold text-gray-900">
+    {{ ImageTitle }}
+  </div>
+  <div class="text-center w-full">
+    <img src="./assets/{{ ImageUrl }}" class="w-[600px] h-[450px] mx-auto" />
+  </div>
+</div>
