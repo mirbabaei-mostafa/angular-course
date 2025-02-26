@@ -1,11 +1,24 @@
-import { Directive } from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
 
 @Directive({
   selector: '[appMyClass]',
-  standalone: true
+  standalone: true,
 })
 export class MyClassDirective {
+  constructor(private element: ElementRef) {}
 
-  constructor() { }
+  // Type 1
+  // @Input() set backgroundColor(color: string) {
+  //   this.element.nativeElement.style.backgroundColor = color;
+  // }
 
+  // Type 2
+  // @Input() set appMyClass(color: string) {
+  //   this.element.nativeElement.style.backgroundColor = color;
+  // }
+
+  // Type 3 : Input alias
+  @Input("appMyClass") set backgroundColor(color: string) {
+    this.element.nativeElement.style.backgroundColor = color;
+  }
 }

@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 import { NgFor, NgIf, NgClass } from '@angular/common';
+import { MyClassDirective } from '../../my-class.directive';
+import { NewNgClassDirective } from '../../new-ng-class.directive';
+import {TimesDirective} from "../../times.directive"
 
 @Component({
   selector: 'app-photogallery',
   standalone: true,
-  imports: [NgFor, NgClass, NgIf],
+  imports: [NgFor, NgClass, NgIf, MyClassDirective, NewNgClassDirective, TimesDirective
+  ],
   templateUrl: './photogallery.component.html',
   styleUrl: './photogallery.component.css',
 })
